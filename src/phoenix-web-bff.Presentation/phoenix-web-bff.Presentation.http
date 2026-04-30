@@ -1,0 +1,6 @@
+@phoenix_web_bff.Presentation_HostAddress = http://localhost:5253
+
+GET {{phoenix_web_bff.Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
