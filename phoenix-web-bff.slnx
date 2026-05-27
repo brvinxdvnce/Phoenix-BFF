@@ -1,5 +1,5 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/phoenix-web-bff.Presentation/phoenix-web-bff.Presentation.csproj" />
+    <Project Path="src\phoenix-web-bff.Presentation\phoenix-web-bff.Presentation.csproj" />
   </Folder>
 </Solution>
