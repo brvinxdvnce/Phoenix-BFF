@@ -9,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IGrpcErrorHandler, GrpcErrorHandler>();
 
+//builder.AddConfiguration();
+
 builder.AddGrpcClients();
 
 builder.Services.AddOpenApi();
