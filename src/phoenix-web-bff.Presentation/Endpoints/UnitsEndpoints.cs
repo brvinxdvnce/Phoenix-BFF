@@ -12,7 +12,7 @@ public static class UnitsEndpoints
 {
     public static WebApplication AddUnitsEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("units");
+        var group = app.MapGroup("api/v1/units");
         
         group.MapPost("/",  async (
                     [FromBody] CreateUnitCommand command,

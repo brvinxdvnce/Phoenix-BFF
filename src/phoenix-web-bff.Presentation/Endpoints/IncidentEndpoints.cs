@@ -11,7 +11,7 @@ public static class IncidentEndpoints
 {
     public static WebApplication AddIncidentEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("incidents");
+        var group = app.MapGroup("api/v1/incidents");
 
         group.MapPost("/", async (
                     [FromBody] CreateIncidentCommand cmd, 
