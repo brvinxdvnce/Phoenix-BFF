@@ -36,3 +36,11 @@ app.Run();
 
 //app.MapReverseProxy();
 
+
+/*service MetricService {
+   + rpc GetMetrics(Empty) returns (MetricListResponse);
+   + rpc GetMetric(Id) returns (MetricResponse);
+   + rpc GetRawMetricValue(GetRawMetricValueRequest) returns (MetricValueResponse);
+   + rpc GetMetricValue(GetMetricValueRequest) returns (MetricValueResponse);
+   + rpc AddMetric(AddMetricRequest) returns (MetricResponse);
+}*/

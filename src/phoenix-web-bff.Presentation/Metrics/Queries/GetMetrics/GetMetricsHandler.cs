@@ -17,7 +17,7 @@ public class GetMetricsHandler(
             metricServiceClient
                 .GetMetricsAsync(
                     new Empty(),
-                    new CallOptions(cancellationToken: ct))
-                .ResponseAsync);
+                    new CallOptions(cancellationToken: ct)
+                ).ResponseAsync);
     }
 }
