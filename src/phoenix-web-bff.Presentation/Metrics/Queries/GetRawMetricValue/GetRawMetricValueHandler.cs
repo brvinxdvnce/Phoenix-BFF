@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using Grpc.Core;
 using MediatR;
 using phoenix_web_bff.Presentation.Common.Services.Abstractions;
 using Phoenix;
@@ -10,11 +11,13 @@ public class GetRawMetricValueHandler(
     MetricService.MetricServiceClient metricServiceClient
     ) : IRequestHandler<GetRawMetricValueQuery, Result<MetricValueResponse>>
 {
-    public async Task<Result<MetricValueResponse>> Handle(GetRawMetricValueQuery request, CancellationToken cancellationToken)
+    public async Task<Result<MetricValueResponse>> Handle(GetRawMetricValueQuery request, CancellationToken ct)
     {
         return await errorHandler.TryAsync(() => 
             metricServiceClient
-                .GetRawMetricValueAsync(request.Request)
+                .GetRawMetricValueAsync(
+                    request.Request,
+                    new CallOptions(cancellationToken: ct))
                 .ResponseAsync);
     }
 }
