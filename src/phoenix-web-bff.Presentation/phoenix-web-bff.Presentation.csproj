@@ -28,4 +28,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IncidentSeverities\Commands\" />
+    <Folder Include="IncidentSeverities\Queries\" />
+  </ItemGroup>
+
 </Project>

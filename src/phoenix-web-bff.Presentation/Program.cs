@@ -1,4 +1,5 @@
 using System.Reflection;
+using Microsoft.AspNetCore.Diagnostics;
 using phoenix_web_bff.Presentation.Common.Services.Abstractions;
 using phoenix_web_bff.Presentation.Common.Services.Implementations;
 using phoenix_web_bff.Presentation.DependencyInjection;
@@ -20,6 +21,8 @@ builder.Services.AddMediatR(cfg =>
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -28,19 +31,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//app.AddAuthEndpoints();
 app.AddIncidentEndpoints();
+app.AddIncidentSeverityEndpoints();
 app.AddMetricsEndpoints();
 app.AddUnitsEndpoints();
 
 app.Run();
 
 //app.MapReverseProxy();
-
-
-/*service MetricService {
-   + rpc GetMetrics(Empty) returns (MetricListResponse);
-   + rpc GetMetric(Id) returns (MetricResponse);
-   + rpc GetRawMetricValue(GetRawMetricValueRequest) returns (MetricValueResponse);
-   + rpc GetMetricValue(GetMetricValueRequest) returns (MetricValueResponse);
-   + rpc AddMetric(AddMetricRequest) returns (MetricResponse);
-}*/
