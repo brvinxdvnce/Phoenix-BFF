@@ -4,6 +4,7 @@ using phoenix_web_bff.Presentation.Common.Services.Abstractions;
 using phoenix_web_bff.Presentation.Common.Services.Implementations;
 using phoenix_web_bff.Presentation.DependencyInjection;
 using phoenix_web_bff.Presentation.Endpoints;
+using phoenix_web_bff.Presentation.Middleware;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,13 +22,13 @@ builder.Services.AddMediatR(cfg =>
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionHandlerMiddleware>();
+app.UseMiddleware<ExceptionHandleMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.MapOpenApi();
     app.MapScalarApiReference();
-}
+//}
 
 app.UseHttpsRedirection();
 

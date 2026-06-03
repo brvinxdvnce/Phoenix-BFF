@@ -9,10 +9,12 @@ public static class GrpcClientsRegisterExtension
     {
         var coreChannel = GrpcChannel.ForAddress(builder.Configuration["Grpc:CoreAddress"]!);
         var sentryChannel = GrpcChannel.ForAddress(builder.Configuration["Grpc:SentryAddress"]!);
-
+        var authChannel = GrpcChannel.ForAddress(builder.Configuration["Grpc:AuthAddress"] ?? "https://localhost:6666");
+        
         builder.Services.AddSingleton(new IncidentService.IncidentServiceClient(coreChannel));
         builder.Services.AddSingleton(new UnitService.UnitServiceClient(coreChannel));
         builder.Services.AddSingleton(new MetricService.MetricServiceClient(sentryChannel));
+        builder.Services.AddSingleton(new AuthService.AuthServiceClient(sentryChannel));
         
         return builder;
     }
